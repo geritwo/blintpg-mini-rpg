@@ -3,7 +3,6 @@ import pygame
 
 class SpriteSheet:
     def __init__(self, filename, w, h, color_key, scale=1):
-        self.filename = filename
         self.sprite_sheet = pygame.image.load(filename).convert_alpha()
         self.color_key = color_key
         self.scale = scale
@@ -24,14 +23,15 @@ class SpriteSheet:
 
         return image
 
-    def get_phases(self, start_pos_v, start_pos_h, steps_h, steps_v=0) -> []:
+    def get_phases(self, row, column, steps, vertical=False) -> []:
         phases = []
-        x_pos, y_pos = start_pos_v + self.w, start_pos_h + self.h
-        for v in range(0, steps_v+1):
-            for h in range(0, steps_h+1):
-                phases.append(self.get_image(x_pos, y_pos))
+        x_pos, y_pos = column * self.w, row * self.h
+        for step in range(0, steps+1):
+            phases.append(self.get_image(x_pos, y_pos))
+            if vertical:
+                y_pos += self.h
+            else:
                 x_pos += self.w
-            y_pos += self.h
         return phases
 
 
