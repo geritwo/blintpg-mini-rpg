@@ -24,16 +24,18 @@ class Player(pygame.sprite.Sprite):
         elif keys[pygame.K_DOWN]:
             self.direction.y = 1
         else:
-            self.direction = 0
+            self.direction.y = 0
 
         if keys[pygame.K_RIGHT]:
             self.direction.x = 1
         elif keys[pygame.K_LEFT]:
-            self.direction.y = -1
+            self.direction.x = -1
         else:
-            self.direction = 0
+            self.direction.x = 0
 
     def move(self, dt):
+        if self.direction.magnitude() > 0:
+            self.direction = self.direction.normalize()
         self.pos += self.direction * self.speed * dt
         self.rect.center = self.pos
 
