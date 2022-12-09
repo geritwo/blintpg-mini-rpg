@@ -26,7 +26,7 @@ class SpriteSheet:
     def get_phases(self, row, column, steps, vertical=False) -> []:
         phases = []
         x_pos, y_pos = column * self.w, row * self.h
-        for step in range(0, steps+1):
+        for step in range(0, steps):
             phases.append(self.get_image(x_pos, y_pos))
             if vertical:
                 y_pos += self.h
