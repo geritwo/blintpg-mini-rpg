@@ -7,8 +7,8 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, pos, group):
         super().__init__(group)
 
-        self.sprite_sheet = SpriteSheet("assets/SproutLandsAssets/Characters/BasicCharacterSpritesheet.png",
-                                        48, 48, 'black', 4)
+        self.sprite_sheet = SpriteSheet("assets/textures/hero-spritesheet-pixilart.png",
+                                        16, 16, 'black', 8)
         self.animations = {}
         self.import_assets()
         self.status = 'right'
@@ -25,16 +25,16 @@ class Player(pygame.sprite.Sprite):
 
     def import_assets(self):
         self.animations = {
-            'down': [], 'up': [], 'left': [], 'right': []
+            'right': [], 'left': [], 'down': [], 'up': [], 'idle': []
         }
 
         row = 0
         for animation in self.animations.keys():
-            phases = self.sprite_sheet.get_phases(row, 2, 2)
+            phases = self.sprite_sheet.get_phases(row, 0, 4)
             self.animations[animation] = phases
             row += 1
 
-        self.animations['idle'] = self.sprite_sheet.get_phases(0, 0, 2)
+        # self.animations['idle'] = self.sprite_sheet.get_phases(0, 0, 2)
 
         print(self.animations)
 
