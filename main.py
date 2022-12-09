@@ -1,20 +1,24 @@
-import pygame
+import pygame, sys
+from settings import *
 
-pygame.init()
 
-SCREEN_WIDTH=1920
-SCREEN_HEIGHT=1080
-screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
+class Game:
+    def __init__(self):
+        pygame.init()
+        self.screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
+        self.clock = pygame.time.Clock()
 
-running = True
-while running:
+    def run(self):
+        while True:
+            for event in pygame.evnt.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+            dt = self.clock.tick() / 1000
+            pygame.display.update()
 
-    screen.fill((5, 255, 5))
 
-    pygame.display.flip()
-
-pygame.quit()
+if __name__ == '__main__':
+    game = Game()
+    game.run()
