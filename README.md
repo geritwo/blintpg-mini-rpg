@@ -1,2 +1,4 @@
 # blintpg-mini-rpg
-BlintPG mini RPG game
+
+A mini RPG-game project in PyGame, based on ShawCode's [https://youtu.be/crUF36OkGDw?si=rSzJuB1Zf_kJr-rg](Pygame RPG Tutorial).
+I chose this as an example because there are plenty of PyGame and Python tutorials out there but he shows how to really nicely structure a project.
